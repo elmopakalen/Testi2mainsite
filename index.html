@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PKLN Marketing rakentaa ja ylläpitää verkkosivuja paikallisille yrityksille Helsingissä. Ilmainen konsepti, AI-chatbot, ajanvaraus ja automaattiset päivitykset.">
+<meta property="og:title" content="PKLN Marketing — Sivustosi, aina ajan tasalla">
+<meta property="og:description" content="Me rakennamme verkkosivut puolestasi. Valmis minuuteissa, päivittyy automaattisesti. Alk. 44€/kk.">
+<meta property="og:type" content="website">
+<title>PKLN Marketing — Sivustosi, aina ajan tasalla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#050d1a;
+  --surface:#0a1628;
+  --surface2:#0f1e35;
+  --border:rgba(255,255,255,0.09);
+  --accent:#4fc3f7;
+  --accent2:#f9a825;
+  --green:#4caf82;
+  --text:#e8f0fe;
+  --muted:#7a9abf;
+  --fd:'Bebas Neue',sans-serif;
+  --fb:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--text);font-family:var(--fb);font-weight:300;line-height:1.6;overflow-x:hidden;cursor:none}
+.cursor{width:12px;height:12px;background:var(--accent);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:difference}
+.cursor-ring{width:36px;height:36px;border:1px solid rgba(79,195,247,.4);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s,height .2s}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.4}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:rgba(5,13,26,.88);backdrop-filter:blur(14px)}
+.nav-logo{font-family:var(--fd);font-size:1.6rem;letter-spacing:.08em;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:12px;align-items:center}
+.nav-wa{font-size:.75rem;font-weight:500;letter-spacing:.08em;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s}
+.nav-wa:hover{color:var(--accent)}
+.nav-cta{font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#050d1a;background:var(--accent);padding:.55rem 1.4rem;border-radius:2px;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:#81d4fa}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 3rem 5rem;position:relative;overflow:hidden}
+.hero-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fd);font-size:clamp(100px,20vw,280px);letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.04);white-space:nowrap;pointer-events:none;user-select:none;z-index:0}
+.hero-tag{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;position:relative;z-index:1;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-tag::before{content:'';display:inline-block;width:28px;height:1px;background:var(--accent);vertical-align:middle;margin-right:10px}
+.hero-hl{font-family:var(--fd);font-size:clamp(3.5rem,10vw,9rem);line-height:.9;letter-spacing:-.01em;position:relative;z-index:1;opacity:0;animation:fadeUp .9s .35s forwards}
+.hero-hl .l2{color:var(--accent);display:block}
+.hero-hl .l3{color:var(--muted);display:block}
+.hero-sub{max-width:500px;font-size:1.05rem;font-weight:300;color:var(--muted);margin-top:2rem;position:relative;z-index:1;opacity:0;animation:fadeUp .9s .5s forwards;line-height:1.7}
+.hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:1.5rem;position:relative;z-index:1;opacity:0;animation:fadeUp .9s .65s forwards}
+.hbadge{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--border);border-radius:20px;color:var(--muted)}
+.hbadge.green{border-color:var(--green);color:var(--green)}
+.hero-scroll{position:absolute;bottom:2.5rem;right:3rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-rl;z-index:1;animation:fadeUp 1s .9s both}
+
+/* MARQUEE */
+.mq-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1rem 0;overflow:hidden;background:var(--surface)}
+.mq-track{display:flex;gap:3rem;animation:marquee 20s linear infinite;white-space:nowrap}
+.mq-item{font-family:var(--fd);font-size:1.1rem;letter-spacing:.1em;color:var(--muted);flex-shrink:0}
+.mq-item span{color:var(--accent);margin:0 1rem}
+
+/* SECTIONS */
+.section{padding:6rem 3rem;position:relative}
+.sec-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.sec-title{font-family:var(--fd);font-size:clamp(2.2rem,5.5vw,4.5rem);line-height:1;letter-spacing:.02em;margin-bottom:3rem}
+
+/* FREE CONCEPT BANNER */
+.free-banner{background:linear-gradient(135deg,#0a2a1a 0%,#0a1628 100%);border:1px solid var(--green);border-radius:4px;padding:2.5rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:4rem}
+.free-badge{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;background:var(--green);color:#050d1a;padding:4px 12px;border-radius:20px;margin-bottom:.75rem;display:inline-block}
+.free-banner h3{font-family:var(--fd);font-size:2rem;color:var(--green);line-height:1;margin-bottom:.5rem}
+.free-banner p{font-size:.9rem;color:var(--muted);max-width:420px;line-height:1.7}
+.free-cta{font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:#050d1a;background:var(--green);padding:.75rem 1.75rem;border-radius:2px;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:background .2s}
+.free-cta:hover{background:#6bcfa0}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.step{background:var(--black);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:background .3s}
+.step:hover{background:var(--surface2)}
+.step-num{font-family:var(--fd);font-size:5rem;color:rgba(255,255,255,.04);position:absolute;top:-.5rem;right:1rem;line-height:1;pointer-events:none}
+.step-icon{width:36px;height:36px;border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;font-size:.9rem}
+.step h3{font-size:1rem;font-weight:500;margin-bottom:.75rem;color:var(--text)}
+.step p{font-size:.88rem;color:var(--muted);line-height:1.7}
+.step-accent{color:var(--accent)}
+
+/* SERVICES GRID */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.srv-card{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:2rem;transition:border-color .3s}
+.srv-card:hover{border-color:var(--accent)}
+.srv-icon{font-size:1.5rem;margin-bottom:1rem;display:block}
+.srv-card h3{font-size:.95rem;font-weight:500;color:var(--text);margin-bottom:.6rem}
+.srv-card p{font-size:.83rem;color:var(--muted);line-height:1.7}
+.srv-roi{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border)}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.why-stat{font-family:var(--fd);font-size:clamp(3.5rem,8vw,6.5rem);line-height:1;color:var(--accent);display:block}
+.why-label{font-size:.85rem;color:var(--muted);margin-top:.5rem;margin-bottom:2rem}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:2rem}
+.pill{font-size:.75rem;letter-spacing:.06em;padding:6px 14px;border:1px solid var(--border);border-radius:100px;color:var(--muted);transition:border-color .2s,color .2s}
+.pill:hover{border-color:var(--accent);color:var(--accent)}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.price-card{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:2rem;position:relative}
+.price-card.featured{border:2px solid var(--accent)}
+.price-badge{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--accent);color:#050d1a;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:.75rem}
+.price-name{font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.price-amount{font-family:var(--fd);font-size:3.5rem;color:var(--text);line-height:1}
+.price-amount span{font-size:1rem;color:var(--muted);font-family:var(--fb);font-weight:300}
+.price-setup{font-size:.75rem;color:var(--accent);letter-spacing:.06em;margin:.5rem 0 1.25rem}
+.price-divider{border:none;border-top:1px solid var(--border);margin:1.25rem 0}
+.price-feature{font-size:.83rem;color:var(--muted);padding:4px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.price-feature::before{content:'✓';color:var(--green);flex-shrink:0;font-weight:500}
+.price-note{font-size:.75rem;color:var(--muted);margin-top:1rem;font-style:italic}
+
+/* WAITLIST */
+.waitlist-section{background:var(--surface);border-top:1px solid var(--border);padding:7rem 3rem;text-align:center;position:relative;overflow:hidden}
+.waitlist-section::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(79,195,247,.06) 0%,transparent 70%);pointer-events:none}
+.waitlist-section .sec-title{margin-bottom:1rem}
+.wl-sub{font-size:1rem;color:var(--muted);max-width:460px;margin:0 auto 2.5rem;line-height:1.7}
+.wl-form{display:flex;gap:0;max-width:500px;margin:0 auto;border:1px solid var(--border)}
+.wl-form input{flex:1;background:transparent;border:none;padding:1rem 1.25rem;font-family:var(--fb);font-size:.9rem;color:var(--text);outline:none}
+.wl-form input::placeholder{color:var(--muted)}
+.wl-form button{background:var(--accent);border:none;padding:1rem 1.75rem;font-family:var(--fb);font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#050d1a;cursor:none;transition:background .2s;white-space:nowrap}
+.wl-form button:hover{background:#81d4fa}
+.wl-count{margin-top:1.25rem;font-size:.78rem;color:var(--muted);letter-spacing:.06em}
+.wl-count strong{color:var(--text)}
+.success-msg{display:none;margin-top:1.5rem;font-size:.9rem;color:var(--green);letter-spacing:.06em}
+
+/* CONTACT */
+.contact-section{padding:6rem 3rem;text-align:center;border-top:1px solid var(--border)}
+.wa-btn{display:inline-flex;align-items:center;gap:12px;background:var(--accent);color:#050d1a;font-family:var(--fb);font-size:.85rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:1rem 2.5rem;text-decoration:none;border-radius:2px;transition:background .2s}
+.wa-btn:hover{background:#81d4fa}
+
+/* FOOTER */
+footer{padding:2.5rem 3rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;font-size:.78rem;color:var(--muted)}
+.footer-logo{font-family:var(--fd);font-size:1.2rem;color:var(--text);letter-spacing:.08em}
+.footer-logo span{color:var(--accent)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:1.25rem 1.5rem}
+  .hero{padding:0 1.5rem 4rem}
+  .hero-scroll{display:none}
+  .section{padding:4rem 1.5rem}
+  .steps{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .why-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .free-banner{flex-direction:column;padding:2rem 1.5rem}
+  .waitlist-section{padding:5rem 1.5rem}
+  .wl-form{flex-direction:column}
+  .wl-form button{width:100%}
+  .contact-section{padding:4rem 1.5rem}
+  footer{flex-direction:column;gap:1rem;text-align:center}
+  body{cursor:auto}
+  .cursor,.cursor-ring{display:none}
+}
+@media(max-width:600px){
+  .services-grid{grid-template-columns:1fr}
+  .nav-wa{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#"><span>PKLN</span> MARKETING</a>
+  <div class="nav-links">
+    <a class="nav-wa" href="https://wa.me/358456044388" target="_blank" rel="noopener">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <a class="nav-cta" href="#waitlist">Liity listalle</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">PKLN</div>
+  <div class="hero-tag">Rakennamme verkkosivut puolestasi — nopeasti, helposti, valmiiksi</div>
+  <h1 class="hero-hl">
+    SINUN SIVUSI.<br>
+    <span class="l2">AINA</span>
+    <span class="l3">AJAN TASALLA.</span>
+  </h1>
+  <p class="hero-sub">Rakennamme ja ylläpidämme verkkosivuja paikallisille yrityksille — kahviloille, lakitoimistoille, kampaamoille, asentajille. Sinä keskityt asiakkaisiin. Me hoidamme loput.</p>
+  <div class="hero-badges">
+    <span class="hbadge green">✦ Ilmainen konsepti</span>
+    <span class="hbadge">AI-chatbot</span>
+    <span class="hbadge">Ajanvaraus</span>
+    <span class="hbadge">SMS &amp; email-vahvistukset</span>
+    <span class="hbadge">Alk. 44€/kk</span>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">Vieritä</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq-wrap" aria-hidden="true">
+  <div class="mq-track">
+    <span class="mq-item">VALMIS 5 MINUUTISSA<span>✦</span></span>
+    <span class="mq-item">ME TEEMME PUOLESTASI<span>✦</span></span>
+    <span class="mq-item">ILMAINEN KONSEPTI<span>✦</span></span>
+    <span class="mq-item">AI-CHATBOT<span>✦</span></span>
+    <span class="mq-item">AJANVARAUS<span>✦</span></span>
+    <span class="mq-item">ALK. 44€/KK<span>✦</span></span>
+    <span class="mq-item">VALMIS 5 MINUUTISSA<span>✦</span></span>
+    <span class="mq-item">ME TEEMME PUOLESTASI<span>✦</span></span>
+    <span class="mq-item">ILMAINEN KONSEPTI<span>✦</span></span>
+    <span class="mq-item">AI-CHATBOT<span>✦</span></span>
+    <span class="mq-item">AJANVARAUS<span>✦</span></span>
+    <span class="mq-item">ALK. 44€/KK<span>✦</span></span>
+  </div>
+</div>
+
+<!-- FREE CONCEPT -->
+<section class="section">
+  <div class="free-banner">
+    <div>
+      <span class="free-badge">100% ilmainen — ei sitoumuksia</span>
+      <h3>Ilmainen sivustokonsepti yrityksellesi</h3>
+      <p>Haluatko nähdä miltä sivustosi voisi näyttää ennen päätöstä? Me rakennamme ilmaisen konseptin yrityksesi tiedoilla — ilman velvoitteita. Näet lopputuloksen ennen kuin maksat mitään.</p>
+    </div>
+    <a class="free-cta" href="https://wa.me/358456044388?text=Haluaisin%20ilmaisen%20sivustokonseptin%20yritykselleni" target="_blank" rel="noopener">Pyydä ilmainen konsepti →</a>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="sec-label">Näin se toimii</div>
+  <h2 class="sec-title">KOLME ASKELTA.<br>NOLLA VAIVAA.</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num" aria-hidden="true">01</div>
+      <div class="step-icon" aria-hidden="true">→</div>
+      <h3>Löydämme yrityksesi</h3>
+      <p>Haemme tietosi Googlesta — nimi, aukioloajat, kuvat, sijainti. Ei lomakkeita, ei briiffejä. <span class="step-accent">Kestää 60 sekuntia.</span></p>
+    </div>
+    <div class="step">
+      <div class="step-num" aria-hidden="true">02</div>
+      <div class="step-icon" aria-hidden="true">◈</div>
+      <h3>Rakennamme sivusi</h3>
+      <p>Kirjoitamme tekstit, suunnittelemme sivut ja julkaisemme nopean, mobiiliystävällisen verkkosivun puolestasi. <span class="step-accent">Valmis alle 5 minuutissa.</span></p>
+    </div>
+    <div class="step">
+      <div class="step-num" aria-hidden="true">03</div>
+      <div class="step-icon" aria-hidden="true">↻</div>
+      <h3>Pidämme sen ajantasalla</h3>
+      <p>Aukioloajat muuttuu? Uusi menu? Uusi sesonki? Päivitämme sivusi automaattisesti. Sinun ei tarvitse tehdä mitään. <span class="step-accent">Se vain toimii.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="sec-label">Palvelut</div>
+  <h2 class="sec-title">ENEMMÄN KUIN<br>VAIN VERKKOSIVUT.</h2>
+  <div class="services-grid">
+
+    <div class="srv-card">
+      <span class="srv-icon">🌐</span>
+      <h3>Verkkosivut</h3>
+      <p>Ammattimaiset, nopeat ja mobiilioptimoidut sivut jotka rakennamme puolestasi. Ei koodausta, ei ylläpitovaivaa.</p>
+      <div class="srv-roi">Peruspalvelu — kaikissa paketeissa</div>
+    </div>
+
+    <div class="srv-card">
+      <span class="srv-icon">🤖</span>
+      <h3>AI-chatbot</h3>
+      <p>Chatbot joka vastaa asiakkaidesi kysymyksiin 24/7 — aukioloajat, hinnat, palvelut, varaukset. Ei enää puheluita perusasioihin.</p>
+      <div class="srv-roi">ROI: Vähentää asiakaspalvelupuheluita jopa 60%</div>
+    </div>
+
+    <div class="srv-card">
+      <span class="srv-icon">⚡</span>
+      <h3>AI-agentti</h3>
+      <p>Kehittyneempi AI joka hoitaa monivaiheisia tehtäviä — tarjouspyynnöt, lomakkeiden käsittely, asiakaskommunikaatio automaattisesti.</p>
+      <div class="srv-roi">ROI: Korvaa usean tunnin manuaalista työtä päivässä</div>
+    </div>
+
+    <div class="srv-card">
+      <span class="srv-icon">📅</span>
+      <h3>Ajanvarausjärjestelmä</h3>
+      <p>Asiakkaat varaavat ajan suoraan sivustolta — sinä et tarvitse puhelinta tai kalenteria. Integroituu suoraan Google Kalenteriin.</p>
+      <div class="srv-roi">ROI: Täyttää kalenterin automaattisesti, ei peruutuksia</div>
+    </div>
+
+    <div class="srv-card">
+      <span class="srv-icon">✉️</span>
+      <h3>Email-vahvistukset</h3>
+      <p>Automaattiset sähköpostivahvistukset jokaisesta varauksesta, kyselystä ja toimenpiteestä. Ammattimainen asiakaskokemus alusta asti.</p>
+      <div class="srv-roi">ROI: Vähentää peruutuksia jopa 40%</div>
+    </div>
+
+    <div class="srv-card">
+      <span class="srv-icon">📱</span>
+      <h3>SMS-vahvistukset</h3>
+      <p>Tekstiviestimuistutukset asiakkaille ennen varattua aikaa. Toimii kaikilla puhelimilla — ei sovelluksia, ei rekisteröitymistä.</p>
+      <div class="srv-roi">ROI: No-show-prosentti laskee jopa 70%</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section">
+  <div class="why-grid">
+    <div>
+      <div class="sec-label">Ongelma</div>
+      <h2 class="sec-title" style="margin-bottom:1.5rem">USEIMMAT<br>PAIKALLISET<br>SIVUT OVAT<br>KUOLLEET.</h2>
+      <p style="color:var(--muted);font-size:.95rem;max-width:380px;line-height:1.8">Väärät aukioloajat. Vanha menu. Ei kuvia. Vanhentunut sivu on pahempi kuin ei sivua ollenkaan — se ajaa asiakkaat kilpailijalle.</p>
+      <div class="pills">
+        <span class="pill">Kahvilat</span>
+        <span class="pill">Kampaamot</span>
+        <span class="pill">Putkimiehet</span>
+        <span class="pill">Ravintolat</span>
+        <span class="pill">Kukkakaupat</span>
+        <span class="pill">Lakitoimistot</span>
+        <span class="pill">Parturit</span>
+        <span class="pill">Sähköasentajat</span>
+      </div>
+    </div>
+    <div>
+      <span class="why-stat">63%</span>
+      <div class="why-label">paikallisista yrityksistä ei ole toimivia nettisivuja</div>
+      <span class="why-stat" style="color:var(--text)">4 min</span>
+      <div class="why-label">keskimääräinen aika sivuston julkaisuun kanssamme</div>
+      <span class="why-stat" style="color:var(--accent2)">€0</span>
+      <div class="why-label">lisähinta automaattisista kuukausipäivityksistä</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="sec-label">Hinnoittelu</div>
+  <h2 class="sec-title">SELKEÄ HINTA.<br>EI YLLÄTYKSIÄ.</h2>
+  <div class="pricing-grid">
+
+    <div class="price-card">
+      <div class="price-name">Basic</div>
+      <div class="price-amount">44<span>€/kk</span></div>
+      <div class="price-setup">+ 149€ aloitusmaksu</div>
+      <hr class="price-divider">
+      <div class="price-feature">Ammattimaiset verkkosivut</div>
+      <div class="price-feature">Mobiilioptimitu</div>
+      <div class="price-feature">1 päivitys per kuukausi</div>
+      <div class="price-feature">SSL-sertifikaatti</div>
+      <div class="price-feature">Google-listaus kuntoon</div>
+      <p class="price-note">Sopii: Pienyritykset joilla tarvitaan näkyvyys verkossa</p>
+    </div>
+
+    <div class="price-card featured">
+      <span class="price-badge">✦ Suosituin</span>
+      <div class="price-name">Elävä sivu</div>
+      <div class="price-amount">89<span>€/kk</span></div>
+      <div class="price-setup">+ 149€ aloitusmaksu</div>
+      <hr class="price-divider">
+      <div class="price-feature">Kaikki Basic-paketista</div>
+      <div class="price-feature">Automaattiset päivitykset</div>
+      <div class="price-feature">Ajanvarausjärjestelmä</div>
+      <div class="price-feature">Email-vahvistukset</div>
+      <div class="price-feature">SMS-muistutukset asiakkaille</div>
+      <div class="price-feature">AI-chatbot (perus)</div>
+      <p class="price-note">Sopii: Kampaajat, kahvilat, ravintolat, asiantuntijapalvelut</p>
+    </div>
+
+    <div class="price-card">
+      <div class="price-name">Pro</div>
+      <div class="price-amount">149<span>€/kk</span></div>
+      <div class="price-setup">+ 149€ aloitusmaksu</div>
+      <hr class="price-divider">
+      <div class="price-feature">Kaikki Elävä sivu -paketista</div>
+      <div class="price-feature">AI-agentti (edistynyt)</div>
+      <div class="price-feature">Paikallinen hakukoneoptimointi</div>
+      <div class="price-feature">Kuukausiraportti + analytiikka</div>
+      <div class="price-feature">Tarjouspyyntölomake + automaatio</div>
+      <div class="price-feature">Prioriteettituki</div>
+      <p class="price-note">Sopii: Lakitoimistot, lääkäriasemat, konsulttitoimistot</p>
+    </div>
+
+  </div>
+  <p style="text-align:center;color:var(--muted);font-size:.82rem;margin-top:1.5rem">Aloitusmaksu 149€ sisältää sivuston rakentamisen, domainin konfiguroinnin ja henkilökohtaisen käyttöönoton. Kaikki paketit sisältävät ilmaisen konseptin ennen sopimuksen allekirjoittamista.</p>
+</section>
+
+<!-- WAITLIST -->
+<section class="waitlist-section" id="waitlist">
+  <div class="sec-label" style="margin-bottom:1rem">Varhaiset käyttäjät</div>
+  <h2 class="sec-title">OLE ENSIMMÄINEN.<br><span style="color:var(--accent)">SAA ENEMMÄN.</span></h2>
+  <p class="wl-sub">Lanseeraamme Helsingissä. Liity listalle ja saat <strong style="color:var(--text)">ensimmäisen kuukauden ilmaiseksi</strong> + henkilökohtaisen käyttöönottopuhelun tiimimme kanssa.</p>
+  <form class="wl-form" onsubmit="handleSubmit(event)" novalidate>
+    <input type="email" id="emailInput" placeholder="sinun@sahkoposti.fi" required autocomplete="email" aria-label="Sähköpostiosoite">
+    <button type="submit">Liity listalle</button>
+  </form>
+  <div class="wl-count"><strong id="countDisplay">47</strong> henkilöä jo listalla</div>
+  <div class="success-msg" id="successMsg" role="alert">✦ Olet mukana — otamme pian yhteyttä!</div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <div class="sec-label">Ota yhteyttä</div>
+  <h2 class="sec-title" style="margin-bottom:1rem">KYSYTTÄVÄÄ?<br><span style="color:var(--accent)">KIRJOITA MEILLE.</span></h2>
+  <p style="color:var(--muted);font-size:.95rem;max-width:400px;margin:0 auto 2.5rem;line-height:1.8">Vastaamme nopeasti. Kerro yrityksestäsi ja katsotaan miten voimme auttaa — tai pyydä ilmainen konsepti heti.</p>
+  <a class="wa-btn" href="https://wa.me/358456044388?text=Hei%2C%20olen%20kiinnostunut%20PKLN%20Marketing%20palveluistanne" target="_blank" rel="noopener">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Avaa WhatsApp
+  </a>
+  <p style="color:var(--muted);font-size:.78rem;margin-top:1.25rem">tai sähköpostia: elmopkln@gmail.com</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span>PKLN</span> MARKETING</div>
+  <div>Helsinki, Suomi</div>
+  <div>© 2025 PKLN Marketing</div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX;my=e.clientY;
+    cursor.style.left=mx+'px';cursor.style.top=my+'px';
+  });
+  function animRing(){
+    rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
+    ring.style.left=rx+'px';ring.style.top=ry+'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+  document.querySelectorAll('a,button,input').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cursor.style.width='6px';cursor.style.height='6px';ring.style.width='52px';ring.style.height='52px'});
+    el.addEventListener('mouseleave',()=>{cursor.style.width='12px';cursor.style.height='12px';ring.style.width='36px';ring.style.height='36px'});
+  });
+
+  // Waitlist
+  let count=47;
+  async function handleSubmit(e){
+    e.preventDefault();
+    const email=document.getElementById('emailInput').value;
+    if(!email)return;
+    const btn=document.querySelector('.wl-form button');
+    btn.textContent='Lähetetään...';
+    btn.disabled=true;
+    try{
+      await fetch('https://formspree.io/f/xkokwqwe',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({email})
+      });
+    }catch(err){console.error(err)}
+    count++;
+    document.getElementById('countDisplay').textContent=count;
+    document.getElementById('successMsg').style.display='block';
+    document.querySelector('.wl-form').style.opacity='.4';
+    document.querySelector('.wl-form').style.pointerEvents='none';
+  }
+</script>
+</body>
+</html>
